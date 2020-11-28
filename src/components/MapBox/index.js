@@ -8,7 +8,6 @@ export default function Map({ locations }) {
     setUserLocation
   ] = useState({ latitude: 50.0755, longitude: 14.4378 })
 
-  console.log('userLocation', userLocation)
 
   const [
     viewport,
@@ -56,8 +55,8 @@ export default function Map({ locations }) {
           trackUserLocation={true}
           style={{ position: 'absolute', padding: '1em', right: 0 }}
           onViewportChange={(nextViewport) => {
-            setUserLocation({ latitude: nextViewport.latitude, longitude: nextViewport.longitude })
-            setViewport(nextViewport)
+            setUserLocation(nextViewport)
+            setViewport({...nextViewport, zoom: 16, pitch: 30})
           }}
         />
         <Layer {...parkLayer} paint={{ 'fill-color': '#dea' }} />
