@@ -23,7 +23,7 @@ export default function Map({ locations }) {
     // The latitude and longitude of the center of London
     latitude: 50.0755,
     longitude: 14.4378,
-    zoom: 13,
+    zoom: 14,
     pitch: 40
   })
 
@@ -39,7 +39,11 @@ export default function Map({ locations }) {
           setViewport(nextViewport)
           console.log(nextViewport)
         }}
-      />
+      >
+        <Marker latitude={50.0755} longitude={14.4378} offsetLeft={-20} offsetTop={-10}>
+          <div className="mark">You are here</div>
+        </Marker>
+      </ReactMapGL>
     </div>
   )
 }
