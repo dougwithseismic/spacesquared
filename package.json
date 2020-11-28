@@ -1,5 +1,5 @@
 {
-  "name": "keus-store",
+  "name": "space-squared-liveworkplay",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,16 +10,18 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "mapbox-gl": "^1.13.0",
     "next": "10.0.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-map-gl": "^5.2.10",
     "sass": "^1.28.0"
   },
   "devDependencies": {
-    "@storybook/react": "^6.0.28",
     "@storybook/addon-actions": "^6.0.28",
     "@storybook/addon-essentials": "^6.0.28",
     "@storybook/addon-links": "^6.0.28",
+    "@storybook/react": "^6.0.28",
     "tailwindcss": "^1.9.6"
   }
 }

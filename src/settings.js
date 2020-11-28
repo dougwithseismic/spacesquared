@@ -1,3 +1,3 @@
 export default {
-  siteName: 'Keus-Store.com'
+  siteName: 'Space Squared'
 }
