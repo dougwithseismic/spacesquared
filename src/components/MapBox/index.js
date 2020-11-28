@@ -32,7 +32,7 @@ export default function Map({ locations }) {
       <ReactMapGL
         width="100vw"
         height="100vh"
-        mapStyle="mapbox://styles/dougwithseismic/ck99v4cr70p831imouulah651"
+        mapStyle="mapbox://styles/dougwithseismic/cki1n30yt35b919mj4n6ksqv7"
         mapboxApiAccessToken={process.env.MAPBOX_KEY}
         {...viewport}
         onViewportChange={(nextViewport) => {
