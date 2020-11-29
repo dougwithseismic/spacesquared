@@ -4,6 +4,10 @@ import { GeolocateControl } from 'mapbox-gl'
 
 import SiteContext from '../../context/siteContext'
 
+const Map = ReactMapboxGl({
+  accessToken: process.env.MAPBOX_KEY
+})
+
 export default function Map({ locations }) {
   const [
     viewport,
@@ -23,10 +27,6 @@ export default function Map({ locations }) {
     userLocation,
     setUserLocation
   ] = useState({})
-
-  const Map = ReactMapboxGl({
-    accessToken: process.env.MAPBOX_KEY
-  })
 
   // GeoLocate
   const geolocate = new GeolocateControl({
