@@ -1,10 +1,9 @@
-import Head from 'next/head'
 import SEO from '../components/SEO'
 
 import { useEffect, useState } from 'react'
 
 import dynamic from 'next/dynamic'
-import styles from '../styles/Home.module.css'
+import EventOverlay from '../components/EventOverlay'
 
 const MapBox = dynamic(() => import('../components/MapBox'), {
   loading: () => 'Loading...',
@@ -47,9 +46,8 @@ export default function Home() {
   }, [])
 
   return (
-    <div className={styles.container}>
+    <div className="container">
       <SEO title="Home" />
-
       <MapBox locations={locations} />
     </div>
   )

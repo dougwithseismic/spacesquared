@@ -14,7 +14,7 @@
     "next": "10.0.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-map-gl": "^5.2.10",
+    "react-mapbox-gl": "^5.1.1",
     "sass": "^1.28.0"
   },
   "devDependencies": {

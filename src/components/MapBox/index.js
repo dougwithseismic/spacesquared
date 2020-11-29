@@ -1,13 +1,17 @@
-import { useState, useRef, useEffect } from 'react'
-import ReactMapGL, { Marker, GeolocateControl, Layer } from 'react-map-gl'
+import { useState, useRef, useContext } from 'react'
+import ReactMapboxGl, { Layer, Feature, MapContext } from 'react-mapbox-gl'
+import { GeolocateControl } from 'mapbox-gl'
+
+import SiteContext from '../../context/siteContext'
 
 export default function Map({ locations }) {
+  const { setSelectedEvent } = useContext(SiteContext)
+
   const targetRef = useRef()
   const [
     userLocation,
     setUserLocation
   ] = useState({ latitude: 50.0755, longitude: 14.4378 })
-
 
   const [
     viewport,
@@ -20,47 +24,37 @@ export default function Map({ locations }) {
     pitch: 40
   })
 
-  const parkLayer = {
-    id: 'landuse_park',
-    type: 'fill',
-    source: 'mapbox',
-    'source-layer': 'landuse',
-    filter: [
-      '==',
-      'class',
-      'park'
-    ]
-  }
+  const Map = ReactMapboxGl({
+    accessToken: process.env.MAPBOX_KEY
+  })
 
   return (
     <div className="w-screen h-screen" ref={targetRef}>
-      <ReactMapGL
-        width="100vw"
-        height="100vh"
-        mapStyle="mapbox://styles/dougwithseismic/cki1n30yt35b919mj4n6ksqv7"
-        mapboxApiAccessToken={process.env.MAPBOX_KEY}
-        {...viewport}
-        onViewportChange={(nextViewport) => {
-          setViewport(nextViewport)
+      <Map
+        style="mapbox://styles/mapbox/streets-v9"
+        containerStyle={{
+          height: '100vh',
+          width: '100vw'
         }}
-        GeolocateControl
+        center={[
+          viewport.longitude,
+          viewport.latitude
+        ]}
       >
-        <Marker latitude={userLocation.latitude} longitude={userLocation.longitude} offsetLeft={-20} offsetTop={-10}>
-          <div className="mark" style={{ padding: '1em', backgroundColor: 'white' }}>
-            You are here
-          </div>
-        </Marker>
-        <GeolocateControl
-          positionOptions={{ enableHighAccuracy: true }}
-          trackUserLocation={true}
-          style={{ position: 'absolute', padding: '1em', right: 0 }}
-          onViewportChange={(nextViewport) => {
-            setUserLocation(nextViewport)
-            setViewport({...nextViewport, zoom: 16, pitch: 30})
+        <MapContext.Consumer>
+          {(map) => {
+            map.addControl(new GeolocateControl())
           }}
-        />
-        <Layer {...parkLayer} paint={{ 'fill-color': '#dea' }} />
-      </ReactMapGL>
+        </MapContext.Consumer>
+        <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
+          <Feature
+            coordinates={[
+              viewport.longitude,
+              viewport.latitude
+            ]}
+          />
+        </Layer>
+      </Map>
     </div>
   )
 }

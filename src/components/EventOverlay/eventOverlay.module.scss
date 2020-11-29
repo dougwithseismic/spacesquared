@@ -1,0 +1,38 @@
+/* Small screens - MOBILE */
+@media only screen {
+  .eventOverlay {
+    position: absolute;
+    padding: 2em;
+    background: white;
+
+    font-size: 0.8rem;
+    bottom: 0;
+
+    width: 100%;
+    border-radius: 1em;
+
+    transition: all 0.3s;
+
+    h1 {
+      font-size: 2em;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+  }
+} /* Define mobile styles - Mobile First */
+
+/* Medium screens - TABLET */
+@media only screen and (min-width: 40.063em) {
+} /* min-width 641px, medium screens */
+
+/* Large screens - DESKTOP */
+@media only screen and (min-width: 64.063em) {
+} /* min-width 1025px, large screens */
+
+/* XLarge screens */
+@media only screen and (min-width: 90.063em) {
+} /* min-width 1441px, xlarge screens */
+
+/* XXLarge screens */
+@media only screen and (min-width: 120.063em) {
+} /* min-width 1921px, xlarge screens */
